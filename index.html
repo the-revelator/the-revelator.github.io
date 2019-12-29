@@ -15,30 +15,48 @@
 		a:hover { color: #151B8D; border-bottom: none solid rgba(255,255,255,1); }
 		#monogram { width: 50px; padding: 50px 0 0 0; margin: 0 auto 0 50px; }
 		#about { width: 360px; padding: 0 0 0 150px; margin: -35px 50px 0 auto !important; }
+		h1 { color: #e8fcc2; font-weight: bold; font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased; }
+		h2 {
+			color: #f35626;font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased;
+			background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			-webkit-animation: hue 10s infinite linear;
+		}
+
+		@-webkit-keyframes hue {
+		  from {
+		    -webkit-filter: hue-rotate(0deg);
+		  }
+		  to {
+		    -webkit-filter: hue-rotate(-360deg);
+		  }
+		}
+
 	</style>
 </head>
 
 <body>
 
-<!-- swap out for a logo -->
+<!--swap out for a logo-->
 <div id="monogram">
 	<img src="circlingbirds.gif" />
 </div>
 
-<!-- swap out for information about yourself -->
+<!--swap out for information about your site-->
 <div id="about">
-	<p><font color="e8fcc2"><b>You've arrived at The Heliocentric Hootenanny.</b></p>
-				<p><a href="http://11380.cloudrad.io:9078/live">>>>LIVE NOW<<<</a></p>
+				<h1>You've arrived at The Heliocentric Hootenanny.</h1>
+				<!-- <p>coming soon...</p> -->
+				<h2><a href="http://11380.cloudrad.io:9078/live">>>>LIVE NOW<<<</a></h2>
 				<p>‪(323) XXX-XXXX‬</p>
 				<p><a href="mailto:therevelator@protonmail.com">Email The Revelator</a></p>
 				<!-- <p><a href="/Archives/">Archives</a></p> -->
-
 </div>
 
 <!--include jquery & backstretch-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.backstretch.min.js"></script>
-<script type="text/javascript">
+<script type="application/javascript" src="jquery.backstretch.min.js"></script>
+<script type="application/javascript">
 $(function(){
      $(window).resize(function(){
          if($(this).width() >= 767){
@@ -48,5 +66,7 @@ $(function(){
       .resize();//trigger resize on page load
 });
 </script>
+<!--gradient text sandbox-->
+
 </body>
 </html>

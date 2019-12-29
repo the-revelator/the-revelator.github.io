@@ -39,8 +39,14 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="jquery.backstretch.min.js"></script>
 <script type="text/javascript">
-	$.backstretch("https://raw.githubusercontent.com/the-revelator/the-revelator.github.io/master/background.jpg");
+$(function(){
+     $(window).resize(function(){
+         if($(this).width() >= 767){
+             $.backstretch("background.jpg", {speed: 150});
+         }
+      })
+      .resize();//trigger resize on page load
+});
 </script>
-
 </body>
 </html>

@@ -34,10 +34,34 @@
 		}
 
 	</style>
+	<script>
+	// Set the date we're counting down to
+	var countDownDate = new Date("Feb 23, 2020 18:00:00").getTime();
+	// Update the count down every 1 second
+	var x = setInterval(function() {
+  // Get today's date and time
+  var now = new Date().getTime();
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  // Output the result in an element with id="demo"
+  document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = ">>>>>>>ON AIR NOW<<<<<<<";
+  }
+}, 1000);
+</script>
+
 </head>
 
 <body>
-
 <!--swap out for a logo-->
 <div id="monogram">
 	<img src="circlingbirds.gif" />
@@ -47,25 +71,7 @@
 <div id="about">
 				<h1>You've arrived at The Heliocentric Hootenanny.</h1>
 				<!-- <p>Tune in on Sunday, February 23, 6 PM PST</p>-->
-				<h2>GOING LIVE IN:
-					<p id="demo"></p> <script>
-				var deadline = new Date("Feb 23, 2020 18:00:00").getTime();
-				var x = setInterval(function() {
-				var now = new Date().getTime();
-				var t = deadline - now;
-				var days = Math.floor(t / (1000 * 60 * 60 * 24));
-				var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-				var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-				var seconds = Math.floor((t % (1000 * 60)) / 1000);
-				document.getElementById("demo").innerHTML = days + "d "
-				+ hours + "h " + minutes + "m " + seconds + "s ";
-    		if (t < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = ">>>>>>>ON AIR NOW<<<<<<<";
-    		}
-			}, 1000);
-			</script>
-				</h2>
+				<h2>GOING LIVE IN: <a id="timer"></a></h2>
 			<!--	<h2>>>>>>>>ON AIR NOW<<<<<<<</h2>
 				<p><audio controls><source src="http://11380.cloudrad.io:9078/live"/></audio></p> -->
 				<p>‪(323) 347-1167‬</p>
@@ -86,7 +92,6 @@ $(function(){
       .resize();//trigger resize on page load
 });
 </script>
-<!--gradient text sandbox-->
 
 </body>
 </html>

@@ -1,4 +1,20 @@
-<!doctype html>
+<?php
+
+if($_POST["submit"]) {
+    $recipient="therevelator@protonmail.com";
+    $subject="I have a song request, please";
+    $sender=$_POST["sender"];
+    $senderEmail=$_POST["senderEmail"];
+    $message=$_POST["request"];
+
+    $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
+
+    mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
+
+    $thankYou="<p>Thank you! Your message has been sent.</p>";
+}
+
+?><!doctype html>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -8,6 +24,7 @@
 	<meta name="robots" content="all" />
 	<meta name="MSSmartTagsPreventParsing" content="true" />
 	<meta http-equiv="imagetoolbar" content="false" />
+	<meta charset="utf-8">
 </head>
 
 <body>
@@ -16,19 +33,26 @@
 	<img src="circlingbirds.gif" />
 </div>
 
-<!--swap out for information about your site-->
-<div id="about">
-				<h1>You've arrived at The Heliocentric Hootenanny.</h1>
-				<p>Sunday, June 28, 6 PM PST</p>
-				<h2>Going live in: <a id="countdown"></a></h2>
-				<!-- <p>Sign up for notifications below.</p> -->
-				<!-- <h2>>>>>>>>ON AIR NOW<<<<<<<</h2>
-				<p><audio controls><source src="http://11380.cloudrad.io:9078/live"/></audio></p>
-				<p><a href="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u">Click to open the stream in a media player</a> -->
-				<p>‪Leave a message: (323) 347-1167</p>
-				<p><a href="request.php">Make a request‬</p>
-				<p><a href="https://tinyletter.com/heliocentrichootenanny">Notifications</a> | <a href="mailto:therevelator@pm.me">Email</a></p>
-				<!-- <p><a href="/Archives/">Archives</a></p> -->
+<!--swap out for your form-->
+<div id="form">
+	<h1>You can request a song here.</h1>
+
+    <?=$thankYou ?>
+    <form method="post" action="request.php">
+        <label>Name:</label>
+        <input name="sender">
+
+        <label>Email:</label>
+        <input name="senderEmail">
+
+        <label>Song:</label>
+        <textarea rows="5" cols="20" name="request"></textarea>
+
+        <input type="submit" name="submit">
+    </form>
+
+</body>
+</html>
 </div>
 
 <!--include jquery & backstretch-->
@@ -52,7 +76,7 @@ $(function(){
 	a { color: #fff; font-weight: bold; text-decoration: none; border-bottom: none solid rgba(255,255,255,0.3); }
 	a:hover { color: #151B8D; border-bottom: none solid rgba(255,255,255,1); }
 	#monogram { width: 50px; padding: 50px 0 0 0; margin: 0 auto 0 50px; }
-	#about { width: 360px; padding: 0 0 0 150px; margin: -35px 50px 0 auto !important; }
+	#form { width: 360px; padding: 0 0 0 150px; margin: -35px 50px 0 auto !important; }
 	h1 { color: #e8fcc2; font-weight: bold; font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased; }
 	h2 {
 		color: #f35626;font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased;
@@ -71,32 +95,5 @@ $(function(){
 		}
 	}
 </style>
-
-<!-- countdown clock -->
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("June 28, 2020 18:00:00 PDT").getTime();
-// Update the count down every 1 second
-var x = setInterval(function() {
-// Get today's date and time
-var now = new Date().getTime();
-// Find the distance between now and the count down date
-var distance = countDownDate - now;
-// Time calculations for days, hours, minutes and seconds
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-// Output the result in an element with id="demo"
-document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-+ minutes + "m " + seconds + "s ";
-// If the count down is over, write some text
-if (distance < 0) {
-	clearInterval(x);
-	document.getElementById("countdown").innerHTML = ">>>>>>>ON AIR NOW<<<<<<<";
-}
-}, 1000);
-</script>
-
 </body>
 </html>

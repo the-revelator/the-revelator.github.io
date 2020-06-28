@@ -1,20 +1,4 @@
-<?php
-
-if($_POST["submit"]) {
-    $recipient="therevelator@protonmail.com";
-    $subject="I have a song request, please";
-    $sender=$_POST["sender"];
-    $senderEmail=$_POST["senderEmail"];
-    $message=$_POST["request"];
-
-    $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
-
-    mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
-
-    $thankYou="<p>Thank you! Your message has been sent.</p>";
-}
-
-?><!doctype html>
+<!doctype html>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -37,19 +21,9 @@ if($_POST["submit"]) {
 <div id="form">
 	<h1>You can request a song here.</h1>
 
-    <?=$thankYou ?>
-    <form method="post" action="request.php">
-        <label>Name:</label>
-        <input name="sender">
+  <!-- modify this form HTML and place wherever you want your form -->
 
-        <label>Email:</label>
-        <input name="senderEmail">
-
-        <label>Song:</label>
-        <textarea rows="5" cols="20" name="request"></textarea>
-
-        <input type="submit" name="submit">
-    </form>
+<script type="text/javascript" src="https://form.jotform.com/jsform/201760904000036"></script>
 
 </body>
 </html>

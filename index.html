@@ -1,66 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<title>The Heliocentric Hootenanny</title>
 	<link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap">
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta name="robots" content="all" />
-	<meta name="MSSmartTagsPreventParsing" content="true" />
-	<meta http-equiv="imagetoolbar" content="false" />
-</head>
 
-<body>
-<!--swap out for a logo-->
-<div id="monogram">
-	<img src="circlingbirds.gif" />
-</div>
-
-<!--swap out for information about your site-->
-<div id="about">
-	<h1>You've arrived at The Heliocentric Hootenanny.</h1>
-	<p>The last Sunday of every month at 5 PM Pacific</p>
- 	<h2>Going live in: <a id="countdown"></a></h2>
-	<!-- <h2>>>>>>>>ON AIR NOW<<<<<<<</h2>
-	<h2><span id="stream_info_song">Loading...</span><br /></h2>
-	<p><audio controls><source src="http://11380.cloudrad.io:9078/live"/></audio></p>
-	<p><a href='javascript: window.open("https://cdn2.cloudrad.io/heliocentric/live/p1-popup.html", "The Heliocentric Hootenanny", "width=380,height=470,scrollbars=yes")'>Click to open the stream in a popup player</a></p>
-	<p><a href="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u">Click to open the stream in a media player</a> -->
-	<p>‪Leave a message: (323) 347-1167</p>
-	<p><a href="https://tinyletter.com/heliocentrichootenanny">Notifications</a> | <a href="mailto:therevelator@pm.me">Email</a></p>
-</div>
-
-<!--include jquery & backstretch-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="application/javascript" src="jquery.backstretch.min.js"></script>
-<script type="application/javascript">
-$(function(){
-     $(window).resize(function(){
-         if($(this).width() >= 767){
-             $.backstretch("background.jpg", {speed: 150});
-         }
-      })
-      .resize();//trigger resize on page load
-});
-</script>
-
-<!-- gradient text -->
 <style>
+body, html {
+  height: 100%;
+}
+.bg {
+  background-image: url("background.jpg");
+  height: 100%;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+	/* text qualities */
 	* { padding: 0; margin: 0; }
-	p { color: #fff; font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased; }
+	p { color: #fff; font-family: Courier Prime; font-size: 20px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased; }
 	a { color: #fff; font-weight: bold; text-decoration: none; border-bottom: none solid rgba(255,255,255,0.3); }
 	a:hover { color: #151B8D; border-bottom: none solid rgba(255,255,255,1); }
-	#monogram { width: 50px; padding: 50px 0 0 0; margin: 0 auto 0 50px; }
-	#about { width: 360px; padding: 0 0 0 150px; margin: -35px 50px 0 auto !important; }
-	h1 { color: #e8fcc2; font-weight: bold; font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased; }
-	h2 {
-		color: #f35626;font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased;
+	#main { 
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 100%; !important;
+		padding: 50px 0 0 0; 
+		}
+	h1 {
+		color: #f35626;font-family: Didact Gothic; font-weight: bold; font-size: 40px; line-height: 50px; margin-bottom: 12px; -webkit-font-smoothing: antialiased;
 		background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		-webkit-animation: hue 10s infinite linear;
-	}
-
+		}
+	h2 {
+		color: #f35626;font-family: Courier Prime; font-size: 24px; line-height: normal; margin-bottom: 12px; padding: 0 10px; text-align: center; -webkit-font-smoothing: antialiased;
+		background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		-webkit-animation: hue 8s infinite linear;
+		}		
+	h3 { color: #e8fcc2; font-family: Courier Prime; font-size: 20px; line-height: 24px; margin-bottom: 6px; -webkit-font-smoothing: antialiased; }	
+	
 	@-webkit-keyframes hue {
 		from {
 			-webkit-filter: hue-rotate(0deg);
@@ -68,34 +56,137 @@ $(function(){
 		to {
 			-webkit-filter: hue-rotate(-360deg);
 		}
-	}
+	}	   
+    
+.countdown-container {
+  display: none;
+  width: 100vw;
+  height: 5vh;
+  position: relative;
+  perspective: 400px;
+  animation: flip 10s linear infinite;
+  transform-style: preserve-3d;
+}
+.front-face, .back-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(1px); /* Add a slight depth */
+}
+.front-face {
+  transform: rotateY(0deg) translateZ(1px);
+}
+.back-face {
+  transform: rotateY(180deg) translateZ(1px);
+}
+@keyframes flip {
+  0%, 25% {
+    transform: perspective(400px) rotateY(0deg);
+  }
+  25%, 50% {
+    transform: perspective(400px) rotateY(-180deg);
+  }
+  50%, 75% {
+    transform: perspective(400px) rotateY(-180deg);
+  } 
+  75%, 100% {
+    transform: perspective(400px) rotateY(-360deg);
+  }
+}
+
+@keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+    #on-air h2 {
+    animation: pulse 3s ease-in-out infinite;
+    background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 8s infinite linear;
+       }
+       
 </style>
+</head>
+
+<body class="bg">
+
+<!--site content-->
+<main>
+<div id="main">
+	<img src="circlingbirds.gif" />
+	<h1>The Heliocentric Hootenanny</h1>
+ 	<div class="countdown-container">
+ 		<div class="front-face">
+ 		<h2>Live radio in: <span id="countdown"></span></h2>
+ 		</div>
+ 		<div class="back-face">
+ 		<h2>Last Sunday of every month at 5 PM Pacific</h2>
+ 		</div>
+ 	</div>	
+	<div id="on-air" style="display: none;">
+	<h2>☀︎ ON AIR NOW ☀︎</h2>
+	<h3><span id="stream_info_song">Loading...</span><br /></h3>
+	<p><audio controls>
+
+<!-- live -->
+    <source src="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u" type="audio/mp3">
+    Your browser does not support the audio element.
+
+
+<!-- holding
+	<p><a href='javascript: window.open("https://cdn2.cloudrad.io/heliocentric/live/p1-popup.html", "The Heliocentric Hootenanny", "width=380,height=470,scrollbars=yes")'>Click to open the stream in a popup player</a></p>
+	<p><a href="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u">Click to open the stream in a media player</a></p> -->
+	</div>
+	<p><a href="https://tinyletter.com/heliocentrichootenanny">Notifications</a> | <a href="mailto:therevelator@pm.me">Email</a></p>
+	<h3>(323) 347-1167</h3>
+</div>
+</main>
 
 <!-- countdown clock -->
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("November 26, 2023 5:00 PM PST").getTime();
-// Update the count down every 1 second
-var x = setInterval(function() {
-// Get today's date and time
-var now = new Date().getTime();
-// Find the distance between now and the count down date
-var distance = countDownDate - now;
-// Time calculations for days, hours, minutes and seconds
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-// Output the result in an element with id="demo"
-document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-+ minutes + "m " + seconds + "s ";
-// If the count down is over, write some text
-if (distance < 0) {
-	clearInterval(x);
-	document.getElementById("countdown").innerHTML = "ON AIR NOW";
+  <script>
+// Set the date and time for the countdown
+const countdownDate = new Date("November 20, 2023 17:00:00").getTime();
+
+// Function to update the display based on the countdown
+function updateCountdownDisplay() {
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+
+  if (distance <= 0) {
+    clearInterval();
+    document.getElementById("countdown").style.display = "none";
+    document.querySelector(".countdown-container").style.display = "none";
+	{
+    document.getElementById("on-air").style.display = "block";
+    }
+  } else {
+
+    // Calculate days, hours, minutes, and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the countdown
+    document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    {
+    document.querySelector(".countdown-container").style.display = "block"; 
+    }
+  }
 }
-}, 1000);
-</script>
+
+// Update the display immediately when the page loads
+updateCountdownDisplay();
+
+// Update the countdown every second
+const x = setInterval(updateCountdownDisplay, 1000);
+  </script>
 
 <!-- radio stream info -->
 <script language="javascript" type="text/javascript" src="https://cdn2.cloudrad.io/heliocentric/live/streaminfo.js"></script>

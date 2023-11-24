@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
             playPauseButton.innerHTML = '<i class="material-icons icon-size">play_arrow</i>'; // for play
     };
 
+
     // Set up countdown
   // Set the date and time for the countdown
 const countdownDate = new Date("November 26, 2023 17:00:00").getTime();

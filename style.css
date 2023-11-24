@@ -122,7 +122,7 @@ body, html {
     -webkit-text-fill-color: transparent;
     -webkit-animation: hue 8s infinite linear;
     font-family: Courier Prime;
-    font-size: 32px;
+    font-size: calc(1vw + 32px);
     line-height: normal;
     -webkit-font-smoothing: antialiased;
 }
@@ -154,7 +154,7 @@ body, html {
     -webkit-text-fill-color: transparent;
     -webkit-animation: hue 8s infinite linear;
     font-family: Courier Prime;
-    font-size: calc(1vw + 10px); /* Match with on-air sign */
+    font-size: calc(1vw + 16px); /* Match with on-air sign */
     text-align: center;
     line-height: normal;
     -webkit-font-smoothing: antialiased;

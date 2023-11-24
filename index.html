@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap">
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta name="robots" content="all" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <style>
 body, html {
@@ -110,6 +112,51 @@ body, html {
     -webkit-text-fill-color: transparent;
     -webkit-animation: hue 8s infinite linear;
        }
+
+.audio-player {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between button and text */
+	}
+
+.audio-player button {
+  	background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+    -webkit-background-clip: text;
+    color: transparent; /* Make the text/icon transparent */
+    border: none;
+    cursor: pointer;
+    font-size: 50px;
+    outline: none;
+    border-radius: 5px; /* Optional: for rounded corners */
+    padding: 10px 20px; /* Adjust padding as needed */
+    -webkit-text-fill-color: transparent; /* For some browsers */
+    -webkit-animation: hue 10s infinite linear; /* Apply the same animation */
+	}
+	
+	.stream-info {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 200px; /* Adjust as needed */
+}
+
+.stream-info span {
+    font-family: Courier Prime;
+    font-size: 24px;
+    -webkit-font-smoothing: antialiased;
+    background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 8s infinite linear;
+    
+    display: inline-block;
+    padding-left: 100%; /* Start offscreen */
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
        
 </style>
 </head>
@@ -131,13 +178,13 @@ body, html {
  	</div>	
 	<div id="on-air" style="display: none;">
 	<h2>☀︎ ON AIR NOW ☀︎</h2>
-	<h3><span id="stream_info_song">Loading...</span><br /></h3>
-	<p><audio controls>
-
-<!-- live -->
-    <source src="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u" type="audio/mp3">
-    Your browser does not support the audio element.
-
+	<h3>   <div class="audio-player">
+    <audio id="audioElement" src="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u" type="audio/mp3"></audio>
+    <button id="playPauseButton">▶</button> <!-- Unicode Play symbol -->
+    	</div></h3>
+	    <h2><div class="stream-info">
+        <span id="stream_info_song">Loading...</span>
+    	</div></h2>
 
 <!-- holding
 	<p><a href='javascript: window.open("https://cdn2.cloudrad.io/heliocentric/live/p1-popup.html", "The Heliocentric Hootenanny", "width=380,height=470,scrollbars=yes")'>Click to open the stream in a popup player</a></p>
@@ -149,9 +196,48 @@ body, html {
 </main>
 
 <!-- countdown clock -->
-  <script>
-// Set the date and time for the countdown
-const countdownDate = new Date("November 20, 2023 17:00:00").getTime();
+  <script> 
+document.addEventListener('DOMContentLoaded', function () {
+    var audioElement = document.getElementById('audioElement');
+    var playPauseButton = document.getElementById('playPauseButton');
+    var streamInfoSong = document.getElementById('stream_info_song');
+    console.log('streamInfoSong:', streamInfoSong); // Check if the element is found
+
+    // Set up play/pause button functionality
+    playPauseButton.addEventListener('click', function () {
+        if (audioElement.paused) {
+            audioElement.play();
+            playPauseButton.textContent = '⏸'; // Unicode Pause symbol
+        } else {
+            audioElement.pause();
+            playPauseButton.textContent = '⏵'; // Unicode Play symbol
+        }
+    });
+
+    audioElement.onended = function() {
+        playPauseButton.textContent = '⏵'; // Unicode Play symbol
+    };
+
+    // Function to update the marquee animation
+    function updateMarqueeAnimation() {
+        streamInfoSong.style.display = 'inline';
+        var textWidth = streamInfoSong.offsetWidth;
+		console.log('textWidth:', textWidth); // Check the calculated width
+
+        var animationDuration = textWidth / 100; // Adjust the speed factor as needed
+        streamInfoSong.style.animationDuration = animationDuration + 's';
+    }
+
+    // Call the function initially and whenever the text changes
+    if (streamInfoSong) {
+        updateMarqueeAnimation();
+    } else {
+        console.error('stream_info_song element not found');
+    }
+
+    // Set up countdown
+  // Set the date and time for the countdown
+const countdownDate = new Date("November 26, 2023 17:00:00").getTime();
 
 // Function to update the display based on the countdown
 function updateCountdownDisplay() {
@@ -186,7 +272,9 @@ updateCountdownDisplay();
 
 // Update the countdown every second
 const x = setInterval(updateCountdownDisplay, 1000);
-  </script>
+});
+
+</script>
 
 <!-- radio stream info -->
 <script language="javascript" type="text/javascript" src="https://cdn2.cloudrad.io/heliocentric/live/streaminfo.js"></script>

@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap">
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta name="robots" content="all" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,7 +18,7 @@
 <div class="text-container">
 	</br>
 	<img src="circlingbirds.gif" />
-	<h1 class="centered-title">The Heliocentric Hootenanny</h1>
+	<h1>The Heliocentric Hootenanny</h1>
  	<div class="countdown-container">
  		<div class="front-face">
  		<h2>Live radio in: <span id="countdown"></span></h2>
@@ -26,17 +27,18 @@
  		<h2>Last Sunday of every month at 5 PM Pacific</h2>
  		</div>
  	</div>	
-	<div id="on-air" style="display: none;">
-	<h2>☀︎ ON AIR NOW ☀︎</h2>
+	<div class="on-air" style="display: none;">
+	<div id="on-air-sign">
+		<h2>☀︎ ON AIR NOW ☀︎</h2>
+		</div>
 	<div class="audio-player">
-    <audio id="audioElement" src="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u" type="audio/mp3"></audio>
-    <button id="playPauseButton">▶</button>
-	    <div class="stream-info">
-	    <h2><span id="stream_info_song">Loading...</span></h2>
-    	</div>
+    	<audio id="audioElement" src="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u" type="audio/mp3"></audio>
+    	<button id="playPauseButton">▶</button>
+	    <span id="stream_info_song">Loading...</span>
 		</div>		
     	<p><a href='javascript: window.open("https://cdn2.cloudrad.io/heliocentric/live/p1-popup.html", "The Heliocentric Hootenanny", "width=380,height=470,scrollbars=yes")'>Popup player</a> | 
 		<a href="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u">MP3</a></p>
+    	</div>
     	</div>
 	<p><a href="https://tinyletter.com/heliocentrichootenanny">Notifications</a> | <a href="mailto:therevelator@pm.me">Email</a></p>
 	<h3>(323) 347-1167</h3>

@@ -36,34 +36,37 @@ body, html {
 		}		
 	h3 { color: #e8fcc2; font-family: Courier Prime; font-size: 20px; line-height: normal; -webkit-font-smoothing: antialiased; }
 	
+	.text-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 5px; 
+		}
+	
 	.centered-title {
     	text-align: center; /* Aligns text to the center */
     	margin: 0; /* Sets equal margin on both sides */
     	max-width: 100%; /* Ensures the title doesn't exceed the viewport width */
-	}	
-
-	.text-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px; 
-	}
+		}
+				
+/* adjust margin/padding later if spacing is off */	
 	h1, h2, h3, p {
-	text-align: center;
-	margin: 5px;
-	padding:10px;
-	}
+		text-align: center;
+		margin: 5px;
+		padding:10px;
+		}
 
 	@-webkit-keyframes hue {
 		from {
 			-webkit-filter: hue-rotate(0deg);
-		}
+			}
 		to {
 			-webkit-filter: hue-rotate(-360deg);
-		}
-	}	   
-    
+			}
+		}	   
+
+/* countdown - off-air */
 .countdown-container {
   display: none;
   width: 100vw;
@@ -106,50 +109,58 @@ body, html {
   }
 }
 
-@keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-    }
+/* on air elements */
 
-    #on-air h2 {
-    animation: pulse 3s ease-in-out infinite;
+.on-air {
+	}
+
+#on-air-sign h2 {
     background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-animation: hue 8s infinite linear;
-       }
-
+    font-family: Courier Prime;
+    font-size: 24px;
+    line-height: normal;
+    -webkit-font-smoothing: antialiased;
+}
+    
 .audio-player {
     display: flex;
     align-items: center; /* Align items vertically */
-    gap: 10px; /* Space between button and text */
+    justify-content: center;
+    gap: 5px; /* Space between button and text */
+	width: 100%;
+    margin; 0 auto;
 	}
-
+	
 .audio-player button {
   	background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
     -webkit-background-clip: text;
     color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 75px;
-    padding: 10px 10px; 
+    font-size: calc(5vw + 35px);
     -webkit-text-fill-color: transparent;
     -webkit-animation: hue 10s infinite linear;
 	}
 
-.stream-info {
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-    max-width: 250px;
+#stream_info_song {
+    max-width: 300px;
+    background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 8s infinite linear;
+    font-family: Courier Prime;
+    font-size: calc(1vw + 7px); /* Match with on-air sign */
+    text-align: center;
+    line-height: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
-#stream_info_song {
-	position: absolute;
-	white-space: nowrap;
-	}	
-
-@keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+@media (max-width: 600px) {
+    .audio-player {
+        flex-direction: column;
+		gap: 5px;
+    }
 }

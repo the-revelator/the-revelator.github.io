@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var audioElement = document.getElementById('audioElement');
     var playPauseButton = document.getElementById('playPauseButton');
-    var streamInfoSong = document.getElementById('stream_info_song');
 
     // Set up play/pause button functionality
     playPauseButton.addEventListener('click', function () {
@@ -18,20 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
         playPauseButton.textContent = '⏵'; // Unicode Play symbol
     };
 
-    // Function to update the marquee animation
-    function updateMarqueeAnimation() {
-        streamInfoSong.style.display = 'inline';
-        var textWidth = streamInfoSong.offsetWidth;
-
-        var animationDuration = textWidth / 50; // Adjust the speed factor as needed
-        streamInfoSong.style.animationDuration = animationDuration + 's';
-    };
-
-    // Call the function initially and whenever the text changes
-    if (streamInfoSong) {
-        updateMarqueeAnimation();
-    };
-
     // Set up countdown
   // Set the date and time for the countdown
 const countdownDate = new Date("November 20, 2023 17:00:00").getTime();
@@ -46,7 +31,7 @@ function updateCountdownDisplay() {
     document.getElementById("countdown").style.display = "none";
     document.querySelector(".countdown-container").style.display = "none";
 	{
-    document.getElementById("on-air").style.display = "block";
+    document.querySelector(".on-air").style.display = "block";
     }
   } else {
 

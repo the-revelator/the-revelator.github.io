@@ -6,20 +6,20 @@ document.addEventListener('DOMContentLoaded', function () {
     playPauseButton.addEventListener('click', function () {
         if (audioElement.paused) {
             audioElement.play();
-            playPauseButton.textContent = '⏸'; // Unicode Pause symbol
+            playPauseButton.innerHTML = '<i class="material-icons icon-size">pause</i>'; // for pause
         } else {
             audioElement.pause();
-            playPauseButton.textContent = '⏵'; // Unicode Play symbol
+            playPauseButton.innerHTML = '<i class="material-icons icon-size">play_arrow</i>'; // for play
         }
     });
 
     audioElement.onended = function() {
-        playPauseButton.textContent = '⏵'; // Unicode Play symbol
+            playPauseButton.innerHTML = '<i class="material-icons icon-size">play_arrow</i>'; // for play
     };
 
     // Set up countdown
   // Set the date and time for the countdown
-const countdownDate = new Date("November 26, 2023 17:00:00").getTime();
+const countdownDate = new Date("November 20, 2023 17:00:00").getTime();
 
 // Function to update the display based on the countdown
 function updateCountdownDisplay() {

@@ -142,10 +142,13 @@ body, html {
     color: transparent;
     border: none;
     cursor: pointer;
-    font-size: calc(5vw + 35px);
     -webkit-text-fill-color: transparent;
     -webkit-animation: hue 10s infinite linear;
 	}
+
+.icon-size {
+    font-size: calc(5vw + 35px);
+}
 
 #stream_info_song {
     max-width: 300px;
@@ -163,6 +166,6 @@ body, html {
 @media (max-width: 600px) {
     .audio-player {
         flex-direction: column;
-		gap: 5px;
+		gap: 3px;
     }
 }

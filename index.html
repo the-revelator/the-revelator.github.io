@@ -8,166 +8,16 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap">
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta name="robots" content="all" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-<style>
-body, html {
-  height: 100%;
-}
-.bg {
-  background-image: url("background.jpg");
-  height: 100%;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-	/* text qualities */
-	* { padding: 0; margin: 0; }
-	p { color: #fff; font-family: Courier Prime; font-size: 20px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased; }
-	a { color: #fff; font-weight: bold; text-decoration: none; border-bottom: none solid rgba(255,255,255,0.3); }
-	a:hover { color: #151B8D; border-bottom: none solid rgba(255,255,255,1); }
-	#main { 
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 100%; !important;
-		padding: 50px 0 0 0; 
-		}
-	h1 {
-		color: #f35626;font-family: Didact Gothic; font-weight: bold; font-size: 40px; line-height: 50px; margin-bottom: 12px; -webkit-font-smoothing: antialiased;
-		background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		-webkit-animation: hue 10s infinite linear;
-		}
-	h2 {
-		color: #f35626;font-family: Courier Prime; font-size: 24px; line-height: normal; margin-bottom: 12px; padding: 0 10px; text-align: center; -webkit-font-smoothing: antialiased;
-		background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		-webkit-animation: hue 8s infinite linear;
-		}		
-	h3 { color: #e8fcc2; font-family: Courier Prime; font-size: 20px; line-height: 24px; margin-bottom: 6px; -webkit-font-smoothing: antialiased; }	
-	
-	@-webkit-keyframes hue {
-		from {
-			-webkit-filter: hue-rotate(0deg);
-		}
-		to {
-			-webkit-filter: hue-rotate(-360deg);
-		}
-	}	   
-    
-.countdown-container {
-  display: none;
-  width: 100vw;
-  height: 5vh;
-  position: relative;
-  perspective: 400px;
-  animation: flip 10s linear infinite;
-  transform-style: preserve-3d;
-}
-.front-face, .back-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateZ(1px); /* Add a slight depth */
-}
-.front-face {
-  transform: rotateY(0deg) translateZ(1px);
-}
-.back-face {
-  transform: rotateY(180deg) translateZ(1px);
-}
-@keyframes flip {
-  0%, 25% {
-    transform: perspective(400px) rotateY(0deg);
-  }
-  25%, 50% {
-    transform: perspective(400px) rotateY(-180deg);
-  }
-  50%, 75% {
-    transform: perspective(400px) rotateY(-180deg);
-  } 
-  75%, 100% {
-    transform: perspective(400px) rotateY(-360deg);
-  }
-}
-
-@keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-    }
-
-    #on-air h2 {
-    animation: pulse 3s ease-in-out infinite;
-    background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-animation: hue 8s infinite linear;
-       }
-
-.audio-player {
-    display: flex;
-    align-items: center; /* Align items vertically */
-    gap: 10px; /* Space between button and text */
-	}
-
-.audio-player button {
-  	background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
-    -webkit-background-clip: text;
-    color: transparent; /* Make the text/icon transparent */
-    border: none;
-    cursor: pointer;
-    font-size: 50px;
-    outline: none;
-    border-radius: 5px; /* Optional: for rounded corners */
-    padding: 10px 20px; /* Adjust padding as needed */
-    -webkit-text-fill-color: transparent; /* For some browsers */
-    -webkit-animation: hue 10s infinite linear; /* Apply the same animation */
-	}
-	
-	.stream-info {
-    white-space: nowrap;
-    overflow: hidden;
-    max-width: 200px; /* Adjust as needed */
-}
-
-.stream-info span {
-    font-family: Courier Prime;
-    font-size: 24px;
-    -webkit-font-smoothing: antialiased;
-    background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-animation: hue 8s infinite linear;
-    
-    display: inline-block;
-    padding-left: 100%; /* Start offscreen */
-    animation: marquee 10s linear infinite;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-       
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg">
-
-<!--site content-->
 <main>
-<div id="main">
+<div id="radio">
+<div class="text-container">
+	</br>
 	<img src="circlingbirds.gif" />
-	<h1>The Heliocentric Hootenanny</h1>
+	<h1 class="centered-title">The Heliocentric Hootenanny</h1>
  	<div class="countdown-container">
  		<div class="front-face">
  		<h2>Live radio in: <span id="countdown"></span></h2>
@@ -178,106 +28,23 @@ body, html {
  	</div>	
 	<div id="on-air" style="display: none;">
 	<h2>☀︎ ON AIR NOW ☀︎</h2>
-	<h3>   <div class="audio-player">
+	<div class="audio-player">
     <audio id="audioElement" src="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u" type="audio/mp3"></audio>
-    <button id="playPauseButton">▶</button> <!-- Unicode Play symbol -->
-    	</div></h3>
-	    <h2><div class="stream-info">
-        <span id="stream_info_song">Loading...</span>
-    	</div></h2>
-
-<!-- holding
-	<p><a href='javascript: window.open("https://cdn2.cloudrad.io/heliocentric/live/p1-popup.html", "The Heliocentric Hootenanny", "width=380,height=470,scrollbars=yes")'>Click to open the stream in a popup player</a></p>
-	<p><a href="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u">Click to open the stream in a media player</a></p> -->
-	</div>
+    <button id="playPauseButton">▶</button>
+	    <div class="stream-info">
+	    <h2><span id="stream_info_song">Loading...</span></h2>
+    	</div>
+		</div>		
+    	<p><a href='javascript: window.open("https://cdn2.cloudrad.io/heliocentric/live/p1-popup.html", "The Heliocentric Hootenanny", "width=380,height=470,scrollbars=yes")'>Popup player</a> | 
+		<a href="https://cdn2.cloudrad.io/heliocentric/live/listen.m3u">MP3</a></p>
+    	</div>
 	<p><a href="https://tinyletter.com/heliocentrichootenanny">Notifications</a> | <a href="mailto:therevelator@pm.me">Email</a></p>
 	<h3>(323) 347-1167</h3>
-</div>
 </main>
 
-<!-- countdown clock -->
-  <script> 
-document.addEventListener('DOMContentLoaded', function () {
-    var audioElement = document.getElementById('audioElement');
-    var playPauseButton = document.getElementById('playPauseButton');
-    var streamInfoSong = document.getElementById('stream_info_song');
-    console.log('streamInfoSong:', streamInfoSong); // Check if the element is found
+<script src="https://cdn2.cloudrad.io/heliocentric/live/streaminfo.js"></script>
 
-    // Set up play/pause button functionality
-    playPauseButton.addEventListener('click', function () {
-        if (audioElement.paused) {
-            audioElement.play();
-            playPauseButton.textContent = '⏸'; // Unicode Pause symbol
-        } else {
-            audioElement.pause();
-            playPauseButton.textContent = '⏵'; // Unicode Play symbol
-        }
-    });
-
-    audioElement.onended = function() {
-        playPauseButton.textContent = '⏵'; // Unicode Play symbol
-    };
-
-    // Function to update the marquee animation
-    function updateMarqueeAnimation() {
-        streamInfoSong.style.display = 'inline';
-        var textWidth = streamInfoSong.offsetWidth;
-		console.log('textWidth:', textWidth); // Check the calculated width
-
-        var animationDuration = textWidth / 100; // Adjust the speed factor as needed
-        streamInfoSong.style.animationDuration = animationDuration + 's';
-    }
-
-    // Call the function initially and whenever the text changes
-    if (streamInfoSong) {
-        updateMarqueeAnimation();
-    } else {
-        console.error('stream_info_song element not found');
-    }
-
-    // Set up countdown
-  // Set the date and time for the countdown
-const countdownDate = new Date("November 26, 2023 17:00:00").getTime();
-
-// Function to update the display based on the countdown
-function updateCountdownDisplay() {
-  const now = new Date().getTime();
-  const distance = countdownDate - now;
-
-  if (distance <= 0) {
-    clearInterval();
-    document.getElementById("countdown").style.display = "none";
-    document.querySelector(".countdown-container").style.display = "none";
-	{
-    document.getElementById("on-air").style.display = "block";
-    }
-  } else {
-
-    // Calculate days, hours, minutes, and seconds
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Display the countdown
-    document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    {
-    document.querySelector(".countdown-container").style.display = "block"; 
-    }
-  }
-}
-
-// Update the display immediately when the page loads
-updateCountdownDisplay();
-
-// Update the countdown every second
-const x = setInterval(updateCountdownDisplay, 1000);
-});
-
-</script>
-
-<!-- radio stream info -->
-<script language="javascript" type="text/javascript" src="https://cdn2.cloudrad.io/heliocentric/live/streaminfo.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

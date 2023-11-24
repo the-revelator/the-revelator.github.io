@@ -14,27 +14,29 @@ body, html {
 	p { color: #fff; font-family: Courier Prime; font-size: 20px; line-height: normal; -webkit-font-smoothing: antialiased; }
 	a { color: #fff; font-weight: bold; text-decoration: none; border-bottom: none solid rgba(255,255,255,0.3); }
 	a:hover { color: #151B8D; border-bottom: none solid rgba(255,255,255,1); }
+	
 	#radio { 
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		height: 100%; 
 		}
+	
 	h1 {
-		color: #f35626;font-family: Didact Gothic; font-weight: bold; font-size: 40px; line-height: normal; margin: 10px; padding: -10px; -webkit-font-smoothing: antialiased;
+		color: #f35626;font-family: Didact Gothic; font-weight: bold; font-size: calc(3vw + 24px); line-height: normal; margin: 10px; padding: -10px; -webkit-font-smoothing: antialiased;
 		background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		-webkit-animation: hue 10s infinite linear;
 		}
 	h2 {
-		color: #f35626;font-family: Courier Prime; font-size: 24px; line-height: normal; -webkit-font-smoothing: antialiased;
+		color: #f35626;font-family: Courier Prime; font-size: calc(2vw + 12px); line-height: normal; -webkit-font-smoothing: antialiased;
 		background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		-webkit-animation: hue 8s infinite linear;
 		}		
-	h3 { color: #e8fcc2; font-family: Courier Prime; font-size: 20px; line-height: normal; -webkit-font-smoothing: antialiased; }
+	h3 { color: #e8fcc2; font-family: Courier Prime; font-size: calc(2vw + 12px); line-height: normal; -webkit-font-smoothing: antialiased; }
 	
 	.text-container {
 		display: flex;
@@ -120,7 +122,7 @@ body, html {
     -webkit-text-fill-color: transparent;
     -webkit-animation: hue 8s infinite linear;
     font-family: Courier Prime;
-    font-size: 24px;
+    font-size: 32px;
     line-height: normal;
     -webkit-font-smoothing: antialiased;
 }
@@ -152,7 +154,7 @@ body, html {
     -webkit-text-fill-color: transparent;
     -webkit-animation: hue 8s infinite linear;
     font-family: Courier Prime;
-    font-size: calc(1vw + 7px); /* Match with on-air sign */
+    font-size: calc(1vw + 10px); /* Match with on-air sign */
     text-align: center;
     line-height: normal;
     -webkit-font-smoothing: antialiased;

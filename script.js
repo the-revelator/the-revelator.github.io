@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var audioElement = document.getElementById('audioElement');
-    var playPauseButton = document.getElementById('playPauseButton');
+    "use strict";
+    var audioElement = document.getElementById('audioElement'),
+        playPauseButton = document.getElementById('playPauseButton');
 
     // Set up play/pause button functionality
     playPauseButton.addEventListener('click', function () {
@@ -13,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    audioElement.onended = function() {
-            playPauseButton.innerHTML = '<i class="material-icons icon-size">play_arrow</i>'; // for play
+    audioElement.onended = function () {
+        playPauseButton.innerHTML = '<i class="material-icons icon-size">play_arrow</i>'; // for play
     };
 
     // Set up countdown
   // Set the date and time for the countdown
-const countdownDate = new Date("November 20, 2023 17:00:00").getTime();
+    const countdownDate = new Date("November 20, 2023 17:00:00").getTime();
 
 // Function to update the display based on the countdown
 function updateCountdownDisplay() {

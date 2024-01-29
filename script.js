@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Set up countdown
   // Set the date and time for the countdown
-    const countdownDate = new Date("January 27, 2024 5:00:00 PST").getTime();
+    const countdownDate = new Date("February 25, 2024 5:00:00 PST").getTime();
 
 // Function to update the display based on the countdown
 function updateCountdownDisplay() {

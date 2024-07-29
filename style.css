@@ -71,7 +71,7 @@ body, html {
 /* countdown - off-air */
 .countdown-container {
   display: none;
-  width: 100vw;
+  width: 80vw;
   height: 5vh;
   position: relative;
   align-items: center;

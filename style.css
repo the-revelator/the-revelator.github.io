@@ -150,7 +150,7 @@ body, html {
     font-size: calc(5vw + 35px);
 }
 
-#stream_info_song {
+track-info {
     max-width: 300px;
     background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
     -webkit-background-clip: text;

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Set up countdown
   // Set the date and time for the countdown
-    const countdownDate = new Date("October 25, 2026 17:00:00 PDT").getTime();
+    const countdownDate = new Date("November 29, 2026 17:00:00 PDT").getTime();
 
 // Function to update the display based on the countdown
 function updateCountdownDisplay() {
@@ -46,7 +46,7 @@ function updateCountdownDisplay() {
     // Display the countdown
     document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     {
-    document.querySelector(".countdown-container").style.display = "block"; 
+    document.querySelector(".countdown-container").style.display = "block";
     }
   }
 }
